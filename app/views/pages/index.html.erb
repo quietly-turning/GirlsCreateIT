@@ -1,0 +1,34 @@
+<p class="my">
+	<strong>
+		Listing pages
+		<% if current_user %>
+			<%= link_to 'Create a New Page', new_page_path %></strong>
+		<% else %>
+			</strong>
+			<p>You'll need to be logged in to create new pages.</p>
+		<% end %>
+
+<table class="dataTable" cellpadding="8" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Theme</th>
+			<th>Show</th>
+			<% if current_user %>
+				<th>Edit</th>
+			<% end %>
+		</tr>
+	</thead>
+	<tbody>
+		<% @pages.each do |page| %>
+		  <tr>
+		    <td><%= page.name %></td>
+		    <td><%= page.theme.name %></td>
+		    <td><%= link_to 'Show', page %></td>
+			<% if current_user %>
+		    	<td><%= link_to 'Edit', edit_page_path(page) %></td>
+			<% end %>
+		  </tr>
+		<% end %>
+	</tbody>
+</table>

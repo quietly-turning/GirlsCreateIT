@@ -1,0 +1,14 @@
+<% for instance in current_user.activity_instances %>
+
+	<a href="<%= activity_instance_path(instance) %>" class="myInstance">
+		
+		<% if Time.now - instance.created_at.to_time < 5 %>
+			<div class="newInstance myInstance">
+		<% else %>
+			<div class="myInstance">
+		<% end %>
+	
+		<%= instance.activity.name %>
+		</div>
+	</a>
+<% end%>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GirlsCreateIT!</title>
+	<link rel="shortcut icon" href="favicon.ico">
+	<%= javascript_include_tag 'application' %>
+	<%= javascript_include_tag 'jquery-ui-1.8.18.custom.min.js' %>
+	<%= javascript_include_tag 'jquery.markitup.js' %>
+	<%= javascript_include_tag 'jquery.dataTables.min.js' %>
+	<%= javascript_include_tag 'jquery.spritely-0.6.1.js' %>˜
+	<%= stylesheet_link_tag    "application" %>
+	<%= csrf_meta_tags %>
+</head>
+
+<body>
+  <%= image_tag "leaves-over.png", {:id => "leavesOver"}	%>
+
+	<div id="everything">
+		<a id="headHome" href="<%= root_path %>">
+    		<%= image_tag "girlsCreateIT-title.png", {:id => "mainLogo"} %>
+    	</a>
+	
+		<div id="header">
+			<%= render 'home/tabs' %>
+		</div>
+	
+		<div id="content">
+			<br><br>
+			
+			<% if flash[:notice] %>
+			      <p class="notice"><%= flash[:notice] %></p>
+			<% end %>
+			<% if flash[:error] %>
+			      <p class="error"><%= flash[:error] %></p>
+			<% end %>
+			
+			<%= yield %>
+		</div>
+	</div>
+	
+</body>
+</html>

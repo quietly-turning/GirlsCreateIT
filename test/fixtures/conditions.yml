@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  animal_attr: MyString
+  parameter: MyString
+  operator: 
+  query: 
+  complexOperator: MyString
+
+two:
+  animal_attr: MyString
+  parameter: MyString
+  operator: 
+  query: 
+  complexOperator: MyString

@@ -1,0 +1,79 @@
+<%= form_for(@page) do |f| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+      <% @page.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	
+	
+	<div class="field" style="clear:left">
+		<%= f.label 'Give Your Web Page a Title:' %><br>
+		<%= f.text_field :name %>
+	</div>
+	
+	
+	<%= f.text_area :content, :id => 'markItUpHTML' %>
+	
+	<div id="groupQueries">
+		<%  if @queries.first != nil %>		
+		<div id="yourQueries" style="float:left; margin-right:15px">
+			<%= render 'queries' %>
+		</div>
+			
+		<div style="float:left; margin:14px 0px 0px 10px">
+			<button type="button" onclick="insertQueryAtCaret()">insert query</button>
+		</div>		
+	<% else %>
+		Looks like you haven't created any queries yet.  Once you do, they'll appear here.
+	<% end %>
+	
+	</div>
+	
+	
+
+  	<%= f.hidden_field :user_id %>
+	<%= f.hidden_field :theme_id %>
+	
+	<div class="field" style="float:left;margin-top:30px">
+		Select a visual theme for your page:
+		
+		<% # since theme-previews are 200px wide, we can fit three per row %>
+		
+		<table border="0" cellpadding="10">
+				<% i = 0 %>
+				<% for theme in Theme.all %>
+					<% if i == 0 %>
+						<tr>
+					<% end %>
+						<td>
+							<% if @page.theme && theme.id == @page.theme.id %>
+								<div themeid="<%= theme.id %>" class="themePreview currentThemePreview">
+							<% else %>
+								<div themeid="<%= theme.id %>" class="themePreview">
+							<% end %>
+								<%= theme.name %><br>
+								<%= image_tag ('pageThemes/' + theme.preview_img) %>
+							</div>
+						</td>
+					<% i += 1 %>
+					<% if i == 3 %>
+						</tr>
+						<% i = 0 %>
+					<% end %>
+						
+				<% end %>
+			</tr>
+		</table>
+	</div>
+	
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,41 @@
+<p class="my">
+	<strong>
+		My Queries
+		
+		<% if current_user %>
+			<%= link_to 'Create a New Query', new_query_path %>	</strong>
+		<% else %>
+			</strong>
+			<p>You'll need to be logged in to create new queries.</p>
+		<% end %>
+</p>
+
+<table class="dataTable" cellpadding="6" cellspacing="0">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Show</th>
+			<% if current_user %>
+				<th>Edit*</th>
+			<% end %>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<% @queries.each do |query| %>
+		  <tr>
+			<td><%= query.dummy_id %></td>
+		    <td><%= query.name %></td>
+		    <td><%= link_to 'Show', query %></td>
+			<% if current_user %>
+			<td> edit </td>
+			<% end %>
+		  </tr>
+		<% end %>
+	</tbody>
+	
+</table>
+<% if @queries.size > 0 and current_user %>
+* Query editing is temporarily disabled.
+<% end %>

@@ -1,0 +1,33 @@
+<p><%= link_to 'View All Queries', queries_path %></p>
+
+<p>
+  <b>Query Name:</b>
+  <%= @query.name %>
+</p>
+
+<p>
+  <h4>Query String:</h4>
+  
+  <div class="tab activeTab" id="raw">Raw SQL</div>
+  <div class="tab" id="formatted">Formatted SQL</div>
+  
+  <div class="queryString">
+	  	<div class="rawQuery">
+			<%= raw @query.raw_sql %>
+		</div>
+
+	  
+	  	<div class="formattedQuery">
+			<p style="font-family:verdana, sans-serif;position:relative;bottom:15px; text-align:center">(Try clicking on a condition below!)</p>
+			
+	   		<%= raw @query.formatted_sql %>
+		</div>
+	</div>
+</p>
+
+<br><br>
+<p>
+	<h4>Query Results:</h4>
+	<%= raw @query.html_table %>
+</p>
+<br><br>

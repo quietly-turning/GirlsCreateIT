@@ -1,0 +1,43 @@
+<p class="my">
+	<strong>
+		Animals
+		
+		<% if current_user and current_user.admin? %>
+			<%= link_to 'Add a New Animal', new_animal_path %>
+		<% end %>
+		
+	</strong>
+</p>
+
+<table class="activityInstanceData dataTable" cellspacing="0" cellpadding="6">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Habitat</th>
+			<th>Nocturnal</th>
+			<th>Diet</th>
+			<th>Weight (lbs)</th>
+			<th>Show</th>
+			<% if current_user and current_user.admin? %>
+				<th>Edit</th>
+			<% end %>
+		</tr>
+	<thead>
+		
+	<tbody>	
+		<% for animal in @animals %>
+		<tr>
+			<td><%= animal.name %></td>
+			<td><%= animal.habitat %></td>
+			<td><%= animal.nocturnal %></td>
+			<td><%= animal.diet %></td>
+			<td><%= animal.weight %></td>
+			<td><%= link_to 'Show', animal %></td>
+			<% if current_user and current_user.admin? %>
+				<td><%= link_to 'Edit', edit_animal_path(animal) %></td>
+			<% end %>
+		</tr>
+	<% end %>
+	</tbody>
+	
+</table>

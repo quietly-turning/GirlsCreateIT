@@ -1,0 +1,28 @@
+<div id="availableActivities">
+
+<p>
+	<h3>Available Activities</h3>
+</p>
+	
+<% a = -1 %>
+	<% for act in @activities %>
+
+		<div class="activity">
+				<%= link_to "create a new instance", { :controller => :activity_instances, :action => :make, :id => act.id }, :class => "newInstance" %>				
+			<div class="activityDesc">
+				<b><%= act.name %></b>
+		
+				<p>
+					"<%= act.description %>"<br><br>
+					( <a href="#" class="readMore">read more</a> )
+				</p>
+		
+				<p class="readMore" style="display:none">
+					<%= act.long_description %>
+				</p>
+			</div>
+		</div>
+
+		<% a += 1 %>
+	<% end %>
+</div>

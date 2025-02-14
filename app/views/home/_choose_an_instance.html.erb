@@ -1,0 +1,17 @@
+<div id="chooseAnInstance">	
+	<% if current_user.activity_instances.count == 0 %>
+		<span>
+			Create an<br>
+			activity instance<br>
+			to begin!
+		</span>
+		<span class="arrow">&darr;</span>			
+	<% else %>
+		<span>
+			Choose an<br>
+			activity instance<br>
+			to begin!
+		</span>
+		<span class="arrow">&rarr;</span>
+	<% end %>
+</div>

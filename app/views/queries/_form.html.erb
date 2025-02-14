@@ -1,0 +1,70 @@
+<% @query.conditions.build %>
+<%= form_for @query do |f| %>
+	<% if @query.errors.any? %>
+	  <div id="error_explanation">
+	    <h2><%= pluralize(@query.errors.count, "error") %> prohibited this query from being saved:</h2>
+
+	    <ul>
+	    <% @query.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+
+
+	<div class="field">
+		<div style="float:left; margin-right:30px">		
+			<%= f.label 'Give Your Query a Name:' %><br>
+			<%= f.text_field :name, :size => 50 %>
+		</div>	
+	</div>
+	
+	<br><br><br>
+	
+	<p>
+		Drag and drop a column, then an operator, into the corresponding receptacles to build your query.
+	</p><br>
+
+	<div id="buildYourQuery">
+		
+		<div id="poof" style="display:none"></div>
+		<%= f.fields_for :conditions do |condition_form| %>
+			<%= render :partial => 'condition_fields', :locals => {:form => condition_form} %>
+		<% end %>
+		
+		
+		
+		<div id="corrals">
+			<fieldset id="columnCorral" class="corral">
+				<legend>Columns</legend>
+				<div class="draggable columnBlock">name</div>
+				<div class="draggable columnBlock">habitat</div>
+				<div class="draggable columnBlock">diet</div>
+				<div class="draggable columnBlock">nocturnal</div>
+				<div class="draggable columnBlock">weight</div>
+			</fieldset>
+		
+			<fieldset id="operatorCorral" class="corral">
+			 	<legend>Operators</legend>
+				<% for op in @operators %>
+					<div oid="<%= op.id %>" class="draggable operatorBlock">
+						<p class="<%= op.name %>"><%= raw op.html_representation %></p>
+					</div>
+				<% end %>
+			</fieldset>
+		
+			<fieldset id="complexOperatorCorral" class="corral">
+			 	<legend>Extenders</legend>
+				<div class="draggable complexOperatorBlock" coid="and"><br><p>and</p></div>
+				<div class="complexOperatorBlock" coid="or"><br><p>or</p></div>
+			</fieldset>
+		</div> <!-- /corrals -->
+
+	</div> <!-- /buildYourQuery -->
+
+	<div class="actions">
+		<br>
+	  <%= f.submit %>
+	</div>
+<% end %>
