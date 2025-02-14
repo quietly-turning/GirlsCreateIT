@@ -8,5 +8,7 @@ Heidi and I led multiple after-school programs for young girls, aged 6th–8th g
 ## This repository
 This repository contains the application I wrote for one such session on databases and websites.  The students followed a workbook I'd written to query a relational database and design webpages using the results of their queries, themed around the idea of running a Zoo.  It was great work and the ability to interact directly with students and design curricula for them inspired me to pursue my Master's degree.
 
+![visual query builder in GirlsCreateIT](https://raw.githubusercontent.com/quietly-turning/GirlsCreateIT/9a2ecff833a7875c1770b897139c1b1048fd7b46/query-builder-preview.png)
+
 ## Research Results
 Dr. Webb published on GirlsCreateIT in *Using scaffolded examples to teach computational thinking concepts*.  The full text is available through ACM: https://dl.acm.org/doi/abs/10.1145/2445196.2445227
